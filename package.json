@@ -1,0 +1,59 @@
+{
+  "name": "agentkit-provider-onchain-forensics",
+  "version": "1.0.0",
+  "description": "Coinbase AgentKit action provider: A-F token risk grades with holder breadth and DEX depth, settlement-safety checks, mint activity and wallet screening, from the x402-payable On-chain Forensics API.",
+  "license": "MIT",
+  "author": "On-chain Forensics",
+  "homepage": "https://onchainforensics.dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leohoudinisanders-byte/agentkit-provider-onchain-forensics.git"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "esbuild src/onchainForensicsActionProvider.ts --bundle --format=cjs --platform=node --target=node18 --external:@coinbase/agentkit --external:zod --outfile=dist/index.js && esbuild src/onchainForensicsActionProvider.ts --bundle --format=esm --platform=neutral --target=esnext --external:@coinbase/agentkit --external:zod --outfile=dist/index.mjs && tsc -p tsconfig.json",
+    "smoke": "node test/smoke.mjs"
+  },
+  "keywords": [
+    "agentkit",
+    "coinbase",
+    "coinbase-agentkit",
+    "action-provider",
+    "x402",
+    "onchain",
+    "token-risk",
+    "due-diligence",
+    "defi",
+    "base",
+    "ai-agent",
+    "forensics"
+  ],
+  "peerDependencies": {
+    "@coinbase/agentkit": ">=0.10.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@coinbase/agentkit": "^0.10.4",
+    "@types/node": "^22.10.0",
+    "esbuild": "^0.24.0",
+    "typescript": "^5.6.3",
+    "zod": "^3.23.8"
+  }
+}
